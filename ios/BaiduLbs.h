@@ -1,5 +1,5 @@
-#import <BaiduLbsSpec/BaiduLbsSpec.h>
+#import <React/RCTBridgeModule.h>
+#import <React/RCTEventEmitter.h>
 
-@interface BaiduLbs : NSObject <NativeBaiduLbsSpec>
-
+@interface BaiduLbs : RCTEventEmitter <RCTBridgeModule>
 @end

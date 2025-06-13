@@ -26,6 +26,7 @@ export default defineConfig([
           quoteProps: 'consistent',
           singleQuote: true,
           tabWidth: 2,
+          printWidth: 170,
           trailingComma: 'es5',
           useTabs: false,
         },

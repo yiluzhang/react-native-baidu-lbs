@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/yiluzhang/react-native-baidu-lbs.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm,cpp}"
+  s.dependency 'BMKLocationKit', '~> 2.1.3'
   s.private_header_files = "ios/**/*.h"
 
  install_modules_dependencies(s)
