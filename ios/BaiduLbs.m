@@ -83,6 +83,28 @@ RCT_EXPORT_METHOD(destroy) {
   }
 }
 
+RCT_EXPORT_METHOD(getDistance:(NSDictionary *)point1
+                  point2:(NSDictionary *)point2
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
+{
+  @try {
+    double lat1 = [point1[@"latitude"] doubleValue];
+    double lon1 = [point1[@"longitude"] doubleValue];
+    double lat2 = [point2[@"latitude"] doubleValue];
+    double lon2 = [point2[@"longitude"] doubleValue];
+
+    CLLocation *loc1 = [[CLLocation alloc] initWithLatitude:lat1 longitude:lon1];
+    CLLocation *loc2 = [[CLLocation alloc] initWithLatitude:lat2 longitude:lon2];
+
+    CLLocationDistance distance = [loc1 distanceFromLocation:loc2];
+    resolve(@(distance)); // 距离（米）
+  }
+  @catch (NSException *exception) {
+    reject(@"DISTANCE_ERROR", exception.reason, nil);
+  }
+}
+
 #pragma mark - BMKLocationManagerDelegate
 
 - (void)BMKLocationManager:(BMKLocationManager *)manager

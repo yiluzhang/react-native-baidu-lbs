@@ -64,6 +64,8 @@ type BaiduLbsType = {
   destroy(): void;
   // 位置变化时会触发此事件
   addLocationListener(listener: (event: Location) => void): EmitterSubscription;
+  // 获取两点距离，坐标类型为 bd09ll，返回单位为米
+  getDistance(point1: { latitude: number; longitude: number }, point2: { latitude: number; longitude: number }): Promise<number>;
 };
 
 const emitter = new NativeEventEmitter(BaiduLbs);
@@ -77,6 +79,7 @@ const BaiduLbsModule: BaiduLbsType = {
   stop: BaiduLbs.stop,
   destroy: BaiduLbs.destroy,
   addLocationListener,
+  getDistance: BaiduLbs.getDistance,
 };
 
 export default BaiduLbsModule;

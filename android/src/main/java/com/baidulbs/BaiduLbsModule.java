@@ -1,5 +1,7 @@
 package com.baidulbs;
 
+import android.location.Location;
+
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.BDAbstractLocationListener;
@@ -71,6 +73,22 @@ public class BaiduLbsModule extends ReactContextBaseJavaModule {
 
         LocationClientOption opt = getLocationClientOptionFromMap(option);
         locationClient.setLocOption(opt);
+    }
+
+    @ReactMethod
+    public void getDistance(ReadableMap point1, ReadableMap point2, Promise promise) {
+      try {
+        double lat1 = point1.getDouble("latitude");
+        double lon1 = point1.getDouble("longitude");
+        double lat2 = point2.getDouble("latitude");
+        double lon2 = point2.getDouble("longitude");
+
+        float[] result = new float[1];
+        Location.distanceBetween(lat1, lon1, lat2, lon2, result);
+        promise.resolve((double) result[0]); // 距离（米）
+      } catch (Exception e) {
+        promise.reject("DISTANCE_ERROR", e.getMessage(), e);
+      }
     }
 
     private LocationClientOption getLocationClientOptionFromMap(ReadableMap map) {
