@@ -45,7 +45,7 @@ function App(): React.JSX.Element {
       sub.remove();
     };
   }, []);
-  console.log(location);
+
   const start = async () => {
     await requestPermission();
     BaiduLbs.start();
