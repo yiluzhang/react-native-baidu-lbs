@@ -32,6 +32,9 @@ BaiduLbs.stop();
 // 销毁
 BaiduLbs.destroy();
 
+// 获取两点距离
+BaiduLbs.getDistance({ latitude: 1, longitude: 1 }, { latitude: 2, longitude: 2 }).then(distance => console.log(distance));
+
 ```
 
 ## License
