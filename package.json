@@ -1,6 +1,6 @@
 {
   "name": "react-native-baidu-lbs",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Baidu Location Kit SDK Wrapper",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
